@@ -1,0 +1,37 @@
+.main-menu, .newgame-menu {
+    float:left;
+    margin: 14rem 0;
+    text-align: left;
+    width: 15%;
+}
+.main-menu a , .newgame-menu a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    transition: margin 172ms;
+}
+.main-menu .element , .newgame-menu .element{
+    margin: 0.8rem 0;
+    width: 100%;
+}
+
+.main-menu .element:hover, .newgame-menu .element:hover {
+    cursor:pointer;
+}
+
+.main-menu .element:hover a, .newgame-menu .element:hover a{
+    margin: 0 0.7rem;
+    color:var(--text-secondary);
+}
+
+.newgame-menu h4 {
+    margin: 0;
+}
+
+.newgame-menu .element span {
+    transition: opacity 152ms;
+    opacity: 0;
+}
+.newgame-menu .element:hover span {
+    opacity: 1;
+}

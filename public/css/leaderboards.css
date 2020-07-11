@@ -1,0 +1,78 @@
+
+.leaderboard-menu {
+    padding: 1.2rem 0.6rem;
+    text-align: left;
+    float:right;
+    width: 20rem;
+    height: 94.2vh;
+    background-color: var(--bg-tertiary);
+    margin:0;
+}
+.leaderboard-menu h4 {
+    margin: 0px 0px 1.2rem 0px;
+    display: inline-block;
+}
+.leaderboard-menu hr {
+    border:0;
+    margin:0;
+    animation: color-shift 10s linear 0s infinite alternate;
+}
+
+.leaderboard-menu .table {
+    overflow: auto;
+    height: 8rem;
+}
+
+.leaderboard-menu .table th {
+    background-color: var(--bg-primary);
+}
+
+.leaderboard-menu .table .name {
+    text-align: left;
+}
+.leaderboard-menu .table .time {
+    text-align: right;
+}
+
+.leaderboard_diff_btn {
+    background-color: none;
+    outline:none;
+    border:none;
+    cursor:pointer;
+
+    width: 5rem;
+    height: 2.2rem;
+
+    padding:0;
+    
+    font-size: 1.2rem;
+
+    font-family: 'Open Sans', sans-serif;
+
+    transition:background-color 120ms, color 125ms, padding-left 190ms, border-left 180ms;
+}
+
+.leaderboard_diff_btn:hover {
+    padding-left: 0.6rem;
+}
+
+.leaderboard_diff_btn:active {
+    padding-left: 0.4rem;
+}
+
+.btn-g {
+    background-color: transparent;
+    color:#0F0;
+    border-left:2px solid #0F0;
+}
+
+.btn-y {
+    background-color: transparent;
+    color:#FF0;
+    border-left:2px solid #FF0;
+}
+.btn-r {
+    background-color: transparent;
+    color:#F00;
+    border-left:2px solid #F00;
+}

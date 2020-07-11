@@ -1,0 +1,51 @@
+@import "mainSideNav.css";
+@import "menus.css";
+@import "animations.css";
+@import "leaderboards.css";
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+
+:root {
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+
+    /* Text Colors */
+    --text-primary: #dedede;
+    --text-secondary: #ececec;
+
+    /* Background Colors */
+    --bg-primary: #232323;
+    --bg-secondary: #333;
+    --bg-tertiary: #151515;
+}
+
+body {
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    margin:0;
+    padding:0;
+}
+
+main, .container {
+    margin-left: 5rem;
+    padding-left: 1rem;
+    text-align:center;
+    height: 100%;
+}
+.header {
+    text-align: left;
+}
+table {
+    width:100%;
+    border-collapse: collapse;
+}
+
+.hidden {
+    display: none;
+}
+
+.invisible {
+    opacity: 0;
+}

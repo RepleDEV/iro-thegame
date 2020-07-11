@@ -1,0 +1,66 @@
+
+@keyframes sidenav-border-shift{
+    0% {
+        border-right: 3px solid #F00;
+    }
+    10% {
+        border-right: 3px solid rgb(255, 0, 200);
+    }
+    30% {
+        border-right: 3px solid rgb(200, 0, 255);
+    }
+    40% {
+        border-right: 3px solid rgb(100, 0, 255);
+    }
+    50% {
+        border-right: 3px solid #00F;
+    }
+    60% {
+        border-right: 3px solid rgb(0, 200, 255);
+    }
+    70% {
+        border-right: 3px solid rgb(0, 255, 200);
+    }
+    80% {
+        border-right: 3px solid #0F0;
+    }
+    90% {
+        border-right: 3px solid rgb(255, 200, 0);
+    }
+    100% {
+        border-right: 3px solid #F00;
+    }
+}
+
+@keyframes color-shift{
+    0% {
+        border-top: 2px solid #F00;
+    }
+    10% {
+        border-top: 2px solid rgb(255, 0, 200);
+    }
+    30% {
+        border-top: 2px solid rgb(200, 0, 255);
+    }
+    40% {
+        border-top: 2px solid rgb(100, 0, 255);
+    }
+    50% {
+        border-top: 2px solid #00F;
+    }
+    60% {
+        border-top: 2px solid rgb(0, 200, 255);
+    }
+    70% {
+        border-top: 2px solid rgb(0, 255, 200);
+    }
+    80% {
+        border-top: 2px solid #0F0;
+    }
+    90% {
+        border-top: 2px solid rgb(255, 200, 0);
+    }
+    100% {
+        border-top: 2px solid #F00;
+    }
+}
