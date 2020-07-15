@@ -12,7 +12,7 @@
     <!--IRO JS !! -->
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 
-    <title>iro-thegame | {{count($_GET) ? $_GET["menu"] : 'Playing iro'}}</title>
+    <title>iro-thegame | Playing iro</title>
 </head>
     <body>
         <nav class="navbar">
