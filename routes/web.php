@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/test', 'AjaxLoginController@login');
+
 Route::post('/login', 'AjaxLoginController@login');

@@ -12,6 +12,8 @@
     <!--IRO JS !! -->
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <title>iro-thegame | Playing iro</title>
 </head>
     <body>

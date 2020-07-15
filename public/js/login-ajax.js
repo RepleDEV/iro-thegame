@@ -30,17 +30,25 @@ function login() {
         return;
     }
 
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
+        }
+    });
+
     $.ajax({
         type: "POST",
         url: "/login",
         data: {
-            "_token":"<?php echo csrf_token() ?>",
             "username":username,
             "email":email,
             "password":passwd
         },
         success: function (response) {
-            
+            if (response.err) {
+                $("#error_message").html(response.err);
+                return;
+            }
         }
     });
 }
