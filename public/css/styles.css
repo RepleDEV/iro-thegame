@@ -5,7 +5,7 @@
 
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
 
 :root {
     font-size: 16px;
@@ -48,4 +48,19 @@ table {
 
 .invisible {
     opacity: 0;
+}
+
+.status-corner {
+    margin-left: 0.58rem;
+    position: absolute;
+    bottom:2.5px;
+    background-color: var(--bg-secondary);
+    width: 20rem;
+
+    padding:0;
+    height: 2.4rem;
+
+    border-top-left-radius: 0.5rem;
+
+    font-size: 12px;
 }

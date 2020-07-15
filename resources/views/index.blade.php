@@ -9,6 +9,9 @@
     <script src="https://kit.fontawesome.com/3666f35065.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!--IRO JS !! -->
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+
     <title>iro-thegame | {{count($_GET) ? $_GET["menu"] : 'Playing iro'}}</title>
 </head>
     <body>
@@ -21,7 +24,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void(0)" class="nav-link">
+                    <a href="javascript:void(0)" class="nav-link" onclick="Menu.setTo('newgame');hasCreatedNewGame = false">
                         <i class="fas fa-plus fa-3x"></i>
                         <span class="link-text">New Game</span>
                     </a>
@@ -36,6 +39,10 @@
         </nav>
         <main>
             <div class="main-menu">
+                <div class="header">
+                    <h1 class="title">iro</h1>
+                    <hr class="header-hr">
+                </div>
                 <div class="element" id="btn-play">
                     <a href="javascript:void(0)">
                         play
@@ -54,22 +61,38 @@
             </div>
 
             <div class="newgame-menu hidden">
-                <h4>Choose difficulty</h4>
+                <h4 id="back-btn"><i class="fas fa-chevron-left"></i> Choose difficulty</h4>
                 <hr>
-                <div class="element">
-                    <a href="javascript:void" id="difficulty-select">
+                <div class="element" onclick="Difficulty.easy()">
+                    <a href="javascript:void(0)" id="difficulty-select">
                         Easy <span>(4-bit)</span>
                     </a>
                 </div>
-                <div class="element">
-                    <a href="javascript:void" id="difficulty-select">
+                <div class="element" onclick="Difficulty.medium()">
+                    <a href="javascript:void(0)" id="difficulty-select">
                         Medium <span>(6-bit)</span>
                     </a>
                 </div>
-                <div class="element">
-                    <a href="javascript:void" id="difficulty-select">
+                <div class="element" onclick="Difficulty.hard()">
+                    <a href="javascript:void(0)" id="difficulty-select">
                         Hard <span>(8-bit)</span>
                     </a>
+                </div>
+            </div>
+
+            <div class="play-menu hidden">
+                <div id="picker_element"></div>
+                <div class="slider-container">
+                    <input type="range" name="" id="slider_r" min="0" max="255" value="0" oninput="Game.updateColors()">
+                    <br>
+                    <input type="range" name="" id="slider_g" min="0" max="255" value="0" oninput="Game.updateColors()">
+                    <br>
+                    <input type="range" name="" id="slider_b" min="0" max="255" value="0" oninput="Game.updateColors()">
+                </div>
+                <div class="color-indicator"></div>
+                <div class="color-boxes">
+                    <div id="color_g"></div>
+                    <div id="color_u"></div>
                 </div>
             </div>
 
@@ -93,10 +116,13 @@
                         </tr>
                     </table>
                 </div>
+                <div class="status-corner">
+                    Playing iro - <span id="status_message">Main Menu</span> | Version: 3.0.0 <br> Online Players: 0
+                </div>
             </div>
         </main>
     </body>
-    <script src="js/game.js"></script>
+    <script src="js/game.js" defer></script>
     <script src="js/script.js" defer></script>
 
 </html>

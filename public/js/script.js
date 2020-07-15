@@ -1,20 +1,75 @@
-$(document).ready(function () {
-    $(".navbar").mouseenter(function () { 
-        toggleNav();
-    });
-    $(".navbar").mouseleave(function () { 
-        toggleNav();
-    })
+const MENUS = ["main", "newgame", "play"];
+var current_menu = 0;
+
+var chosenDifficulty;
+
+var hasCreatedNewGame = false;
+
+// var colorPicker = new iro.ColorPicker('#picker_element',{
+//     width:140, // Width
+//     color:'#f00', // Initial color
+//     display:'block', // Display 
+//     margin:'20px', // Margin
+//     wheelLightness:false, // Hard to explain, just check out the iro.js website (iro.js.org)
+//     color:'white' // Again-
+// });
+
+// Onstart header animation
+$(".header-hr").fadeIn(1150);
+$(".header-hr").css("width", "100%");
+
+// Back to previous menu
+$("#back-btn").click(function (e) { 
+    e.preventDefault();
+    Menu.previous();
 });
 
+// Navbar toggle
+$(".navbar").mouseenter(function () { 
+    toggleNav();
+});
+$(".navbar").mouseleave(function () { 
+    toggleNav();
+});
+
+// Play btn from the main menu
 $("#btn-play").click(function (e) { 
     e.preventDefault();
-    $(".main-menu").fadeOut(415);
-    setTimeout(() => {
-        $(".newgame-menu").fadeIn();
-    }, 415);
+    if (current_menu<1) {
+        Menu.next();
+    }
 });
 
+// Difficulty
+const Difficulty = {
+    easy: () => {
+        if (!hasCreatedNewGame){
+            chosenDifficulty = "easy";
+            step = 4;
+            Menu.next();
+            Game.new();
+        }
+    },
+    medium: () => {
+        if (!hasCreatedNewGame) {
+            chosenDifficulty = "medium";
+            step = 6;
+            Menu.next();
+            Game.new();
+        }
+    },
+    hard: () => {
+        if (!hasCreatedNewGame) {
+            chosenDifficulty = "hard";
+            step = 8;
+            Menu.next();
+            Game.new();
+        }
+    },
+    current: () => chosenDifficulty
+}
+
+// Leaderboard button toggle
 $(".leaderboard_diff_btn").click(function (e) { 
     e.preventDefault();
     switch (this.innerHTML) {
@@ -36,6 +91,7 @@ $(".leaderboard_diff_btn").click(function (e) {
     }
 });
 
+// Navbar toggle
 function toggleNav() {
     if($(".link-text").is(":hidden")){
         $(".navbar").css("width", "16rem");
@@ -47,3 +103,29 @@ function toggleNav() {
         $(".link-text").fadeToggle(70);
     }
 }
+
+// Menu functions
+const Menu = {
+    previous: () => {
+        $(`.${MENUS[current_menu]}-menu`).fadeOut(415);
+        current_menu--;
+        setTimeout(() => {
+            $(`.${MENUS[current_menu]}-menu`).fadeIn();
+        }, 415);
+    },
+    next: () => {
+        $(`.${MENUS[current_menu]}-menu`).fadeOut(415);
+        current_menu++;
+        setTimeout(() => {
+            $(`.${MENUS[current_menu]}-menu`).fadeIn();
+        }, 415);
+    },
+    setTo: (menu_name) => {
+        $(`.${MENUS[current_menu]}-menu`).fadeOut(415);
+        current_menu = MENUS.indexOf(menu_name);
+        setTimeout(() => {
+            $(`.${menu_name}-menu`).fadeIn();
+        }, 415);
+    },
+    current: () => console.log("Curent Menu: " + MENUS[current_menu])
+};

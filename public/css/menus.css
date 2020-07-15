@@ -1,8 +1,17 @@
-.main-menu, .newgame-menu {
+.main-menu, .newgame-menu, .play-menu {
     float:left;
-    margin: 14rem 0;
+    margin: 10rem 0;
     text-align: left;
     width: 15%;
+}
+
+.newgame-menu {
+    margin: 13.5rem 0;
+}
+.play-menu {
+    overflow: hidden;
+    width: fit-content;
+    /* background-color: red; */
 }
 .main-menu a , .newgame-menu a{
     text-decoration: none;
@@ -24,8 +33,28 @@
     color:var(--text-secondary);
 }
 
+.main-menu .header h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 120;
+    font-size: 4.2rem;
+    margin:0;
+}
+
+.main-menu .header hr {
+    margin:0;
+    transition: width 1450ms ease;
+    width: 0px;
+    display: none;
+}
+
 .newgame-menu h4 {
+    transition: margin-left 150ms ease;
     margin: 0;
+}
+
+.newgame-menu h4:hover {
+    cursor: pointer;
+    margin-left: 0.4rem;
 }
 
 .newgame-menu .element span {
@@ -34,4 +63,87 @@
 }
 .newgame-menu .element:hover span {
     opacity: 1;
+}
+
+.play-menu #picker_element, .play-menu .color-indicator {
+    float: left;
+    /* margin-right: 2rem; */
+    width: 260px;
+}
+
+.play-menu .slider-container {
+    margin-left: 270px;
+}
+
+.play-menu #picker_element, .play-menu .slider-container {
+    padding-top: 10px;
+}
+
+.play-menu .slider-container input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    width: 20rem;
+    height: 25%;
+    
+    outline:none;
+
+    border-radius: 200px;
+    height: 30px;
+}
+
+.play-menu .slider-container input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 40px;
+    background:black;
+    cursor:pointer;
+    border:2px solid white;
+    border-radius: 15px;
+}
+
+.play-menu .slider-container #slider_r {
+    background-image: linear-gradient(to right,black,red);
+}
+
+.play-menu .slider-container #slider_g {
+    background-image: linear-gradient(to right,black,#0F0);
+    margin-top: 3.7rem;
+}
+
+.play-menu .slider-container #slider_b {
+    background-image: linear-gradient(to right,black,blue);
+    margin-top: 3.7rem;
+}
+
+.play-menu .color-indicator {
+    background-color: black;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 1rem;
+}
+
+.play-menu .color-boxes {
+    margin-left:6rem;
+}
+
+.play-menu .color-boxes, .play-menu .color-indicator {
+    margin-top: 1rem;
+}
+
+.play-menu .color-boxes #color_g {
+    float:left;
+}
+
+.play-menu .color-boxes #color_u {
+    margin-left: 16rem;
+}
+
+.play-menu .color-boxes #color_g, .play-menu .color-boxes #color_u {
+    background-color: black;
+    height: 4rem;
+    width: 15rem;
+    border-radius: 1rem;
 }
