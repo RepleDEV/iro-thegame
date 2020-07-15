@@ -1,4 +1,4 @@
-const MENUS = ["main", "newgame", "play", "login"];
+const MENUS = ["main", "newgame", "play", "login", "signup"];
 var current_menu = 0;
 
 var chosenDifficulty;

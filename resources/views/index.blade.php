@@ -58,16 +58,26 @@
             </div>
 
             <div class="login-menu hidden">
-                <h4 id="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Log-in</h4>
+                <h4 id="back-btn" onclick="Menu.setTo('main');$('#error_message).html('')'"><i class="fas fa-chevron-left"></i>Log-in</h4>
                 <hr>
-                <p id="error_message"></p>
-                <input type="text" name="username" id="username" placeholder="Username">
-                <input type="email" placeholder="Email" id="email">
-                <input type="password" name="passwd" id="passwd" placeholder="Password">
+                <p id="login_error_message"></p>
+                <input type="text" name="username" id="username_login" placeholder="Username">
+                <input type="email" placeholder="Email" id="email_login">
+                <input type="password" name="passwd" id="passwd_login" placeholder="Password">
                 <br>
                 <button onclick="login()">Log-in</button>
+                <p>Don't have an <a href="javascript:void(0)" onclick="Menu.setTo('signup')">account</a>?</p>
             </div>
-
+            <div class="signup-menu hidden">
+                <h4 id="back-btn" onclick="Menu.setTo('main');$('#error_message').html('')"><i class="fas fa-chevron-left"></i>Log-in</h4>
+                <hr>
+                <p id="signup_error_message"></p>
+                <input type="text" name="username" id="username_signup" placeholder="Username">
+                <input type="email" placeholder="Email" id="email_signup">
+                <input type="password" name="passwd" id="passwd_signup" placeholder="Password">
+                <br>
+                <button onclick="signup()">Create Account</button>
+            </div>
             <div class="newgame-menu hidden">
                 <h4 id="back-btn" onclick="Menu.previous()"><i class="fas fa-chevron-left"></i> Choose difficulty</h4>
                 <hr>

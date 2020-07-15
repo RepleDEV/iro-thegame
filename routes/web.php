@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::get('/test', 'AjaxLoginController@login');
 
 Route::post('/login', 'AjaxLoginController@login');
+Route::post('/signup', 'AjaxLoginController@signup');

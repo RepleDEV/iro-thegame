@@ -80,7 +80,7 @@ table {
     transition: border-left 250ms;
 }
 
-#error_message {
+#signup_error_message, #login_error_message {
     color: red;
     text-transform: uppercase;
     font-size: 14px;
