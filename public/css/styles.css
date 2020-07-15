@@ -64,3 +64,24 @@ table {
 
     font-size: 12px;
 }
+
+.login-menu input {
+    background-color:transparent;
+    color:white;
+    outline: none;
+    border:none;
+    border-left: 2px solid #AAA;
+
+    height: 1.5rem;
+    width: 15rem;
+
+    margin:4px 0;
+
+    transition: border-left 250ms;
+}
+
+#error_message {
+    color: red;
+    text-transform: uppercase;
+    font-size: 14px;
+}

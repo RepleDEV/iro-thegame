@@ -1,8 +1,12 @@
-.main-menu, .newgame-menu, .play-menu {
+.main-menu, .newgame-menu, .play-menu, .login-menu {
     float:left;
     margin: 10rem 0;
     text-align: left;
     width: 15%;
+}
+
+.login-menu {
+    width: 25%;
 }
 
 .newgame-menu {
@@ -47,12 +51,12 @@
     display: none;
 }
 
-.newgame-menu h4 {
+#back-btn {
     transition: margin-left 150ms ease;
     margin: 0;
 }
 
-.newgame-menu h4:hover {
+#back-btn:hover {
     cursor: pointer;
     margin-left: 0.4rem;
 }

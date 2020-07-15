@@ -48,20 +48,26 @@
                         play
                     </a>
                 </div>
-                <div class="element">
-                    <a href="javascript:void(0)">
-                        create account
-                    </a>
-                </div>
-                <div class="element">
+                <div class="element" onclick="Menu.setTo('login')">
                     <a href="javascript:void(0)">
                         log-in
                     </a>
                 </div>
             </div>
 
+            <div class="login-menu hidden">
+                <h4 id="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Log-in</h4>
+                <hr>
+                <p id="error_message"></p>
+                <input type="text" name="username" id="username" placeholder="Username">
+                <input type="email" placeholder="Email" id="email">
+                <input type="password" name="passwd" id="passwd" placeholder="Password">
+                <br>
+                <button onclick="login()">Log-in</button>
+            </div>
+
             <div class="newgame-menu hidden">
-                <h4 id="back-btn"><i class="fas fa-chevron-left"></i> Choose difficulty</h4>
+                <h4 id="back-btn" onclick="Menu.previous()"><i class="fas fa-chevron-left"></i> Choose difficulty</h4>
                 <hr>
                 <div class="element" onclick="Difficulty.easy()">
                     <a href="javascript:void(0)" id="difficulty-select">
@@ -122,7 +128,8 @@
             </div>
         </main>
     </body>
-    <script src="js/game.js" defer></script>
-    <script src="js/script.js" defer></script>
+    <script src="js/login-ajax.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/script.js"></script>
 
 </html>

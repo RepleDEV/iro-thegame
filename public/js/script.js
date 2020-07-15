@@ -1,28 +1,13 @@
-const MENUS = ["main", "newgame", "play"];
+const MENUS = ["main", "newgame", "play", "login"];
 var current_menu = 0;
 
 var chosenDifficulty;
 
 var hasCreatedNewGame = false;
 
-// var colorPicker = new iro.ColorPicker('#picker_element',{
-//     width:140, // Width
-//     color:'#f00', // Initial color
-//     display:'block', // Display 
-//     margin:'20px', // Margin
-//     wheelLightness:false, // Hard to explain, just check out the iro.js website (iro.js.org)
-//     color:'white' // Again-
-// });
-
 // Onstart header animation
 $(".header-hr").fadeIn(1150);
 $(".header-hr").css("width", "100%");
-
-// Back to previous menu
-$("#back-btn").click(function (e) { 
-    e.preventDefault();
-    Menu.previous();
-});
 
 // Navbar toggle
 $(".navbar").mouseenter(function () { 
