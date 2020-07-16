@@ -6,29 +6,7 @@ var chosenDifficulty;
 var hasCreatedNewGame = false;
 
 $(document).ready(function () {
-    $.ajaxSetup({
-        headers: {
-            "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
-        }
-    });
-    $("#loading_message").html("Getting userprofile");
-    $.ajax({
-        type: "POST",
-        url: "/ajax_handler/get/profile",
-        success: function (response) {
-            if (response.err) {
-                switch (response.err) {
-                    case "NOT LOGGED IN":
-                        Menu.setTo("main");
-                        break;
-                }
-                return;
-            }
-            Menu.setTo("main");
-            userProfile = response;
-            setupLogIn();
-        }
-    });
+    getUserProfile();
 });
 
 function setupLogIn() {

@@ -23,12 +23,18 @@ Route::get('/test', function () {
 
 Route::prefix('/ajax_handler')->group(function () {
     Route::get('/', function () {
-        return redirect('/');
+        return abort(404);
+    });
+    Route::get('/logout', function () {
+        return abort(404);
     });
     Route::post('/logout', function (){
-        Auth::logout();
+        return redirect('/logout');
     });
     Route::prefix('/get')->group(function () {
+        Route::get('/profile', function () {
+            return abort(404);
+        });
         Route::post('/profile', function () {
             if (Auth::check()) {
                 return Auth::user();
@@ -41,4 +47,4 @@ Route::prefix('/ajax_handler')->group(function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
