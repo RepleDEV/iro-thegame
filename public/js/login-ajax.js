@@ -1,5 +1,7 @@
 "use strict";
 
+var userProfile;
+
 function login() {
     var username = $("#username_login").val();
     var email = $("#email_login").val();
@@ -107,6 +109,7 @@ function signup() {
                 $("#signup_error_message").html(response.err);
                 return;
             }
+            Menu.setTo("main");
         }
     });
 }

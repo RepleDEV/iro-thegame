@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,3 +21,7 @@ Route::get('/test', 'AjaxLoginController@login');
 
 Route::post('/login', 'AjaxLoginController@login');
 Route::post('/signup', 'AjaxLoginController@signup');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
