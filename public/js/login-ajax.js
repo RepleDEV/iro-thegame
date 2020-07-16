@@ -54,6 +54,8 @@ function login() {
                 return;
             }
             Menu.setTo("main");
+            userProfile = response;
+            setupLogIn();
         }
     });
 }
@@ -98,17 +100,33 @@ function signup() {
 
     $.ajax({
         type: "POST",
-        url: "/signup",
+        url: "/register",
         data: {
-            "username":username,
+            "name":username,
             "email":email,
-            "password":passwd
+            "password":passwd,
+            "password_confirmation":passwd
         },
         success: function (response) {
             if (response.err) {
                 $("#signup_error_message").html(response.err);
                 return;
             }
+            Menu.setTo("main");
+        }
+    });
+}
+
+function logout() {
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
+        }
+    });
+    $.ajax({
+        type: "POST",
+        url: "/ajax_handler/logout",
+        success: function (response) {
             Menu.setTo("main");
         }
     });

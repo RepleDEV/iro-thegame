@@ -1,9 +1,54 @@
-const MENUS = ["main", "newgame", "play", "login", "signup"];
+const MENUS = ["loading","main", "newgame", "play", "login", "signup", "settings", "stats", "profile", "profile_settings", "game_settings"];
 var current_menu = 0;
 
 var chosenDifficulty;
 
 var hasCreatedNewGame = false;
+
+$(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
+        }
+    });
+    $("#loading_message").html("Getting userprofile");
+    $.ajax({
+        type: "POST",
+        url: "/ajax_handler/get/profile",
+        success: function (response) {
+            if (response.err) {
+                switch (response.err) {
+                    case "NOT LOGGED IN":
+                        Menu.setTo("main");
+                        break;
+                }
+                return;
+            }
+            Menu.setTo("main");
+            userProfile = response;
+            setupLogIn();
+        }
+    });
+});
+
+function setupLogIn() {
+    var child_menu_element = $(".main-menu").children();
+    var children_amount = child_menu_element.length;
+    var child_element = child_menu_element.first();
+    for (var i = 0;i < children_amount;i++) {
+        if (child_element.children().first().html().trim() == "log-in") {
+            child_element.addClass("hidden");
+            child_element = child_element.next();
+            continue;
+        }
+        if (child_element.hasClass("hidden")) {
+            child_element.removeClass("hidden");
+        }
+        child_element = child_element.next();
+    }
+    $("#logged_in_as").html(userProfile.username);
+    $(".status-corner").html($(".status-corner").html() + ` | Logged in as: <strong>${userProfile.username}</strong>`);
+}
 
 // Onstart header animation
 $(".header-hr").fadeIn(1150);
@@ -20,8 +65,8 @@ $(".navbar").mouseleave(function () {
 // Play btn from the main menu
 $("#btn-play").click(function (e) { 
     e.preventDefault();
-    if (current_menu<1) {
-        Menu.next();
+    if (MENUS[current_menu] != "newgame") {
+        Menu.setTo('newgame');
     }
 });
 
@@ -111,6 +156,12 @@ const Menu = {
         setTimeout(() => {
             $(`.${menu_name}-menu`).fadeIn();
         }, 415);
+    },
+    hide: (menu_name) => {
+        $(menu_name).fadeOut(415);
+    },
+    show: (menu_name) => {
+        $(menu_name).fadeIn();
     },
     current: () => console.log("Curent Menu: " + MENUS[current_menu])
 };

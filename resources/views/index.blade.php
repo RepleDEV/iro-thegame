@@ -21,7 +21,7 @@
             <ul class="navbar-nav">
                 <li class="profile-logo">
                     <a href="javascript:void(0)" class="nav-link">
-                        <span class="link-text" id="user-name-sidenav-span">iro-thegame</span>
+                        <span class="link-text" id="user-name-sidenav-span" style="text-transform: none">iro-thegame</span>
                         <i class="fas fa-angle-double-right fa-3x"></i>
                     </a>
                 </li>
@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void(0)" class="nav-link">
+                    <a href="javascript:void(0)" class="nav-link" onclick="Menu.setTo('settings')">
                         <i class="fas fa-cog fa-5x"></i>
                         <span class="link-text">Settings</span>
                     </a>
@@ -40,7 +40,11 @@
             </ul>
         </nav>
         <main>
-            <div class="main-menu">
+            <div class="loading-menu menu">
+                <p>Loading...</p>
+                <p id="loading_message"></p>
+            </div>
+            <div class="main-menu menu hidden">
                 <div class="header">
                     <h1 class="title">iro</h1>
                     <hr class="header-hr">
@@ -50,14 +54,62 @@
                         play
                     </a>
                 </div>
+                <div class="element" onclick="Menu.setTo('settings')">
+                    <a href="javascript:void(0)">
+                        settings
+                    </a>
+                </div>
                 <div class="element" onclick="Menu.setTo('login')">
                     <a href="javascript:void(0)">
                         log-in
                     </a>
                 </div>
+                <div class="element hidden" onclick="Menu.setTo('stats')">
+                    <a href="javascript:void(0)">
+                        statistics
+                    </a>
+                </div>
+                <div class="element hidden" onclick="Menu.setTo('profile')">
+                    <a href="javascript:void(0)">
+                        profile
+                    </a>
+                </div>
+            </div>
+            <div class="settings-menu menu hidden">
+                <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Settings</h4>
+                <hr>
+                <div class="element" onclick="Menu.setTo('profile_settings')">
+                    <a href="javascript:void(0)">
+                        profile settings
+                    </a>
+                </div>
+                <div class="element" onclick="Menu.setTo('game_settings')">
+                    <a href="javascript:void(0)">
+                        game settings
+                    </a>
+                </div>
             </div>
 
-            <div class="login-menu hidden">
+            <div class="profile_settings-menu menu hidden">
+                <div class="element" onclick="logout()">
+                    <a href="javascript:void(0)">
+                        log-out
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile-menu menu hidden">
+                <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Profile Info</h4>
+                <hr>
+                <p>Logged in as: <strong id="logged_in_as"></strong></p>
+                <div class="element" onclick="Menu.setTo('profile_settings')">
+                    <a href="javascript:void(0)">
+                        profile settings
+                    </a>
+                </div>
+            </div>
+
+            <div class="login-menu menu hidden">
                 <h4 id="back-btn" onclick="Menu.setTo('main');$('#error_message).html('')'"><i class="fas fa-chevron-left"></i>Log-in</h4>
                 <hr>
                 <p id="login_error_message"></p>
@@ -68,8 +120,9 @@
                 <button onclick="login()">Log-in</button>
                 <p>Don't have an <a href="javascript:void(0)" onclick="Menu.setTo('signup')">account</a>?</p>
             </div>
-            <div class="signup-menu hidden">
-                <h4 id="back-btn" onclick="Menu.setTo('main');$('#error_message').html('')"><i class="fas fa-chevron-left"></i>Log-in</h4>
+
+            <div class="signup-menu menu hidden">
+                <h4 class="back-btn" onclick="Menu.setTo('main');$('#error_message').html('')"><i class="fas fa-chevron-left"></i>Log-in</h4>
                 <hr>
                 <p id="signup_error_message"></p>
                 <input type="text" name="username" id="username_signup" placeholder="Username">
@@ -78,8 +131,9 @@
                 <br>
                 <button onclick="signup()">Create Account</button>
             </div>
-            <div class="newgame-menu hidden">
-                <h4 id="back-btn" onclick="Menu.previous()"><i class="fas fa-chevron-left"></i> Choose difficulty</h4>
+
+            <div class="newgame-menu menu hidden">
+                <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i> Choose difficulty</h4>
                 <hr>
                 <div class="element" onclick="Difficulty.easy()">
                     <a href="javascript:void(0)" id="difficulty-select">
@@ -98,7 +152,7 @@
                 </div>
             </div>
 
-            <div class="play-menu hidden">
+            <div class="play-menu menu hidden">
                 <div id="picker_element"></div>
                 <div class="slider-container">
                     <input type="range" name="" id="slider_r" min="0" max="255" value="0" oninput="Game.updateColors()">

@@ -17,10 +17,27 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/test', 'AjaxLoginController@login');
+Route::get('/test', function () {
+    return Auth::user();
+});
 
-Route::post('/login', 'AjaxLoginController@login');
-Route::post('/signup', 'AjaxLoginController@signup');
+Route::prefix('/ajax_handler')->group(function () {
+    Route::get('/', function () {
+        return redirect('/');
+    });
+    Route::post('/logout', function (){
+        Auth::logout();
+    });
+    Route::prefix('/get')->group(function () {
+        Route::post('/profile', function () {
+            if (Auth::check()) {
+                return Auth::user();
+            } else {
+                return response()->json(["err"=>"NOT LOGGED IN"],200);
+            }
+        });
+    });
+});
 
 Auth::routes();
 

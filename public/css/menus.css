@@ -1,4 +1,4 @@
-.main-menu, .newgame-menu, .play-menu, .login-menu, .signup-menu {
+.menu {
     float:left;
     margin: 10rem 0;
     text-align: left;
@@ -17,22 +17,22 @@
     width: fit-content;
     /* background-color: red; */
 }
-.main-menu a , .newgame-menu a{
+a, a, a{
     text-decoration: none;
     text-transform: uppercase;
     color: var(--text-primary);
     transition: margin 172ms;
 }
-.main-menu .element , .newgame-menu .element{
+.element , .element, .element{
     margin: 0.8rem 0;
     width: 100%;
 }
 
-.main-menu .element:hover, .newgame-menu .element:hover {
+.element:hover, .element:hover, .element:hover {
     cursor:pointer;
 }
 
-.main-menu .element:hover a, .newgame-menu .element:hover a{
+.element:hover a,.element:hover a, .element:hover a {
     margin: 0 0.7rem;
     color:var(--text-secondary);
 }
@@ -51,21 +51,21 @@
     display: none;
 }
 
-#back-btn {
+.back-btn {
     transition: margin-left 150ms ease;
     margin: 0;
 }
 
-#back-btn:hover {
+.back-btn:hover {
     cursor: pointer;
     margin-left: 0.4rem;
 }
 
-.newgame-menu .element span {
+.element span {
     transition: opacity 152ms;
     opacity: 0;
 }
-.newgame-menu .element:hover span {
+.element:hover span {
     opacity: 1;
 }
 
