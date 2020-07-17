@@ -72,11 +72,11 @@ a, a, a{
 .play-menu #picker_element, .play-menu .color-indicator {
     float: left;
     /* margin-right: 2rem; */
-    width: 260px;
+    width: 300px;
 }
 
 .play-menu .slider-container {
-    margin-left: 270px;
+    margin-left: 310px;
 }
 
 .play-menu #picker_element, .play-menu .slider-container {

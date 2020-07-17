@@ -155,11 +155,11 @@
             <div class="play-menu menu hidden">
                 <div id="picker_element"></div>
                 <div class="slider-container">
-                    <input type="range" name="" id="slider_r" min="0" max="255" value="0" oninput="Game.updateColors()">
+                    <input type="range" name="" id="slider_r" min="0" max="255" value="0" oninput="Game.updateColorPicker();Game.updateColors()">
                     <br>
-                    <input type="range" name="" id="slider_g" min="0" max="255" value="0" oninput="Game.updateColors()">
+                    <input type="range" name="" id="slider_g" min="0" max="255" value="0" oninput="Game.updateColorPicker();Game.updateColors()">
                     <br>
-                    <input type="range" name="" id="slider_b" min="0" max="255" value="0" oninput="Game.updateColors()">
+                    <input type="range" name="" id="slider_b" min="0" max="255" value="0" oninput="Game.updateColorPicker();Game.updateColors()">
                 </div>
                 <div class="color-indicator"></div>
                 <div class="color-boxes">

@@ -5,15 +5,32 @@ var step;
 var colorPicker = new iro.ColorPicker('#picker_element', {
     layout: [
         {component:iro.ui.Box,},
-        {component:iro.ui.Slider,}
+        {component:iro.ui.Slider,},
+        {component:iro.ui.Slider,options:{sliderType:'hue'}}
     ],
     width:220,
-    color:"#000",
-    wheelLightness:false,
+    color:"#FFF",
     layoutDirection: "horizontal",
 });
 
 const generateRandomColor = () => [Math.floor(Math.random() * 256),Math.floor(Math.random() * 256),Math.floor(Math.random() * 256)];
+
+// Does not accept decimals in any of its parameters
+function round(num) {
+    var nearestMultiple = num;
+    while (nearestMultiple % step != 0) {
+        nearestMultiple--;
+    }
+    if (num - nearestMultiple < step / 2) {
+        return nearestMultiple;
+    } else {
+        return nearestMultiple + step;
+    }
+}
+
+function objectToArr(obj) {
+    return Object.keys(obj).map((key) => [obj[key]]).map(val => val[0]);
+}
 
 const Game = {
     new: () => {
@@ -27,16 +44,37 @@ const Game = {
         $("#slider_b").attr("step", step);
 
         hasCreatedNewGame = true;
+        return;
     },
     updateColors: () => {
-        var colors = Game.getCurrentColors();
+        var colors = Game.getCurrentColors()[0];
         $("#color_u").css("background-color", `rgb(${colors[0]},${colors[1]},${colors[2]})`);
+        return;
     },
-    getCurrentColors: () => 
-        [
+    updateColorPicker: () => {
+        var colorPickerColors = Game.getCurrentColors()[0];
+        colorPicker.color.rgb = {r: colorPickerColors[0], g:colorPickerColors[1],b:colorPickerColors[2]};
+        return;
+    },
+    updateSliders: val => {
+        $("#slider_r").val(val[0]);
+        $("#slider_g").val(val[1]);
+        $("#slider_b").val(val[2]);
+    },
+    getCurrentColors: () => {
+        var sliderColors = [
             $("#slider_r").val(),
             $("#slider_g").val(),
             $("#slider_b").val(),
-        ],
+        ];
+        var pickerColors = objectToArr(colorPicker.color.rgb);
+        return [sliderColors, pickerColors];
+    }
     
 };
+
+colorPicker.on("color:change", val => {
+    Game.updateSliders(Game.getCurrentColors()[1]);
+    Game.updateColorPicker();
+    Game.updateColors();
+});
