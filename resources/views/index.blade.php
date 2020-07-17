@@ -91,6 +91,8 @@
             </div>
 
             <div class="profile_settings-menu menu hidden">
+                <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Profile Settings</h4>
+                <hr>
                 <div class="element" onclick="logout()">
                     <a href="javascript:void(0)">
                         log-out
@@ -102,11 +104,18 @@
                 <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Profile Info</h4>
                 <hr>
                 <p>Logged in as: <strong id="logged_in_as"></strong></p>
+                <p>Games played: <strong id="games_played"></strong></p>
                 <div class="element" onclick="Menu.setTo('profile_settings')">
                     <a href="javascript:void(0)">
                         profile settings
                     </a>
                 </div>
+            </div>
+
+            <div class="stats-menu menu hidden">
+                <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Statistics</h4>
+                <hr>
+                <p>Coming soon!</p>
             </div>
 
             <div class="login-menu menu hidden">
@@ -133,7 +142,7 @@
             </div>
 
             <div class="newgame-menu menu hidden">
-                <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i> Choose difficulty</h4>
+                <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Choose difficulty</h4>
                 <hr>
                 <div class="element" onclick="Difficulty.easy()">
                     <a href="javascript:void(0)" id="difficulty-select">
@@ -153,18 +162,26 @@
             </div>
 
             <div class="play-menu menu hidden">
-                <div id="picker_element"></div>
-                <div class="slider-container">
-                    <input type="range" name="" id="slider_r" min="0" max="255" value="0" oninput="Game.updateColorPicker();Game.updateColors()">
-                    <br>
-                    <input type="range" name="" id="slider_g" min="0" max="255" value="0" oninput="Game.updateColorPicker();Game.updateColors()">
-                    <br>
-                    <input type="range" name="" id="slider_b" min="0" max="255" value="0" oninput="Game.updateColorPicker();Game.updateColors()">
+                <div class="game-container">
+                    <div id="picker_element"></div>
+                    <div class="slider-container">
+                        <input type="range" name="" id="slider_r" min="0" max="255" value="0" oninput="sliderFunc()">
+                        <br>
+                        <input type="range" name="" id="slider_g" min="0" max="255" value="0" oninput="sliderFunc()">
+                        <br>
+                        <input type="range" name="" id="slider_b" min="0" max="255" value="0" oninput="sliderFunc()">
+                    </div>
+                    <div class="color-indicator"></div>
+                    <div class="color-boxes">
+                        <div id="color_g"></div>
+                        <div id="color_u"></div>
+                    </div>
                 </div>
-                <div class="color-indicator"></div>
-                <div class="color-boxes">
-                    <div id="color_g"></div>
-                    <div id="color_u"></div>
+                <hr>
+                <div class="game-info">
+                    <p>Colors: (r,g,b) <span id="game_colors"></span></p>
+                    <p>Time: <span id="game_time">00:00:00</span></p>
+                    <p>Difficulty: <span id="game_diff"></span></p>
                 </div>
             </div>
 

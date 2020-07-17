@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('password', 255);
             $table->date('updated_at');
             $table->date('created_at');
+            $table->string('best_time', 255)->default("No best time yet!");
+            $table->bigInteger('score')->default(0);
         });
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -18,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    return Auth::user();
+   return Auth::check();
 });
 
 Route::prefix('/ajax_handler')->group(function () {
@@ -28,9 +29,7 @@ Route::prefix('/ajax_handler')->group(function () {
     Route::get('/logout', function () {
         return abort(404);
     });
-    Route::post('/logout', function (){
-        return redirect('/logout');
-    });
+    Route::post('/logout', 'Auth\LoginController@logout');
     Route::prefix('/get')->group(function () {
         Route::get('/profile', function () {
             return abort(404);

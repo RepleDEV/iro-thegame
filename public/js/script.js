@@ -6,6 +6,11 @@ var chosenDifficulty;
 var hasCreatedNewGame = false;
 
 $(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
+        }
+    });
     getUserProfile();
 });
 

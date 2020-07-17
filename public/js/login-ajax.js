@@ -34,12 +34,6 @@ function login() {
         return;
     }
 
-    $.ajaxSetup({
-        headers: {
-            "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
-        }
-    });
-
     $.ajax({
         type: "POST",
         url: "/login",
@@ -91,12 +85,6 @@ function signup() {
         return;
     }
 
-    $.ajaxSetup({
-        headers: {
-            "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
-        }
-    });
-
     $.ajax({
         type: "POST",
         url: "/register",
@@ -117,12 +105,11 @@ function signup() {
     });
 }
 
+function resetToken() {
+
+}
+
 function getUserProfile() {
-    $.ajaxSetup({
-        headers: {
-            "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
-        }
-    });
     $("#loading_message").html("Getting userprofile");
     $.ajax({
         type: "POST",
@@ -144,11 +131,6 @@ function getUserProfile() {
 }
 
 function logout() {
-    $.ajaxSetup({
-        headers: {
-            "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
-        }
-    });
     $.ajax({
         type: "POST",
         url: "/ajax_handler/logout",

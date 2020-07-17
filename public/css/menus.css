@@ -52,13 +52,20 @@ a, a, a{
 }
 
 .back-btn {
-    transition: margin-left 150ms ease;
-    margin: 0;
+    margin: 0 0.4rem;
+}
+
+.back-btn svg {
+    margin:0;
+    transition: margin-right 150ms ease;
 }
 
 .back-btn:hover {
     cursor: pointer;
-    margin-left: 0.4rem;
+}
+
+.back-btn:hover svg{
+    margin-right: 0.4rem;
 }
 
 .element span {
@@ -67,6 +74,10 @@ a, a, a{
 }
 .element:hover span {
     opacity: 1;
+}
+
+.play-menu {
+    margin-bottom:0;
 }
 
 .play-menu #picker_element, .play-menu .color-indicator {
