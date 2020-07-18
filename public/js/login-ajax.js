@@ -95,6 +95,7 @@ function signup() {
             "password_confirmation":passwd
         },
         success: function (response) {
+            console.log(response);
             if (response.err) {
                 $("#signup_error_message").html(response.err);
                 return;

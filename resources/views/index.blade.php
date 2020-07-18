@@ -1,5 +1,5 @@
 <?php
-    echo $request;
+
 ?>
 
 <!DOCTYPE html>
