@@ -114,6 +114,11 @@ function getUserProfile() {
     $.ajax({
         type: "POST",
         url: "/ajax_handler/get/profile",
+        // data:{"_token": "{{ csrf_token() }}"},
+        error: function (xhr,status,error) {
+            var err = eval("(" + xhr.responseText + ")");
+            console.log(err.message);
+        },
         success: function (response) {
             if (response.err) {
                 switch (response.err) {
