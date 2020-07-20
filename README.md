@@ -3,4 +3,4 @@ This repository continues the development of the previous [iro-thegame revisions
 
 Game still in heavy development.
 
-### Current version: prev_be4fe28
+### Current version: prev_be4fe30
