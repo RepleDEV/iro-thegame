@@ -71,6 +71,9 @@ const Game = {
         var colors = Game.getCurrentColors();
         $("#color_u").css("background-color", `rgb(${colors[0][0]},${colors[0][1]},${colors[0][2]})`);
         $("#game_colors").html(colors[1].join(", "));
+
+
+
         Game.checkWin();
         return;
     },

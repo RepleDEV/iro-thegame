@@ -80,7 +80,7 @@ a, a, a{
     margin-bottom:0;
 }
 
-.play-menu #picker_element, .play-menu .color-indicator {
+.play-menu #picker_element{
     float: left;
     /* margin-right: 2rem; */
     width: 300px;
@@ -132,19 +132,11 @@ a, a, a{
     background-image: linear-gradient(to right,black,blue);
     margin-top: 3.7rem;
 }
-
-.play-menu .color-indicator {
-    background-color: black;
-    height: 4rem;
-    width: 4rem;
-    border-radius: 1rem;
+.play-menu .color-boxes {
+    margin-left:0;
 }
 
 .play-menu .color-boxes {
-    margin-left:6rem;
-}
-
-.play-menu .color-boxes, .play-menu .color-indicator {
     margin-top: 1rem;
 }
 
@@ -153,12 +145,12 @@ a, a, a{
 }
 
 .play-menu .color-boxes #color_u {
-    margin-left: 16rem;
+    margin-left: 20rem;
 }
 
 .play-menu .color-boxes #color_g, .play-menu .color-boxes #color_u {
     background-color: black;
     height: 4rem;
-    width: 15rem;
+    width: 19rem;
     border-radius: 1rem;
 }

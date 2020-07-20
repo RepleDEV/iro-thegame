@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void(0)" class="nav-link" onclick="Menu.setTo('settings')">
+                    <a href="javascript:void(0)" class="nav-link" onclick="Menu.setTo('settings');hasCreatedNewGame = false"">
                         <i class="fas fa-cog fa-5x"></i>
                         <span class="link-text">Settings</span>
                     </a>
@@ -174,7 +174,6 @@
                         <br>
                         <input type="range" name="" id="slider_b" min="0" max="255" value="0" oninput="sliderFunc()">
                     </div>
-                    <div class="color-indicator"></div>
                     <div class="color-boxes">
                         <div id="color_g"></div>
                         <div id="color_u"></div>
@@ -182,6 +181,7 @@
                 </div>
                 <hr>
                 <div class="game-info">
+                    <p style="font-size:12px;margin:0;">Please note that the color picker may be slightly inaccurate</p>
                     <p>Colors: (r,g,b) <span id="game_colors"></span></p>
                     <p>Time: <span id="game_time">00:00:00</span></p>
                     <p>Difficulty: <span id="game_diff"></span></p>
