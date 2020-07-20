@@ -2,7 +2,7 @@
 /public/hot
 /public/storage
 /storage/*.key
-/vendor
+/vendor/**
 .env
 .env.backup
 .phpunit.result.cache
@@ -11,4 +11,4 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 
-!/vendor/laravel/ui/auth-backend/
+!/vendor/laravel/ui/auth-backend/**
