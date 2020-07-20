@@ -123,7 +123,7 @@
             </div>
 
             <div class="login-menu menu hidden">
-                <h4 id="back-btn" onclick="Menu.setTo('main');$('#error_message).html('')'"><i class="fas fa-chevron-left"></i>Log-in</h4>
+                <h4 class="back-btn" onclick="Menu.setTo('main');$('#error_message').html('')"><i class="fas fa-chevron-left"></i>Log-in</h4>
                 <hr>
                 <p id="login_error_message"></p>
                 <input type="text" name="username" id="username_login" placeholder="Username">

@@ -36,13 +36,14 @@ function login() {
 
     $.ajax({
         type: "POST",
-        url: "/login",
+        url: "/ajax_handler/login",
         data: {
             "username":username,
             "email":email,
             "password":passwd
         },
         success: function (response) {
+            console.log(response);
             if (response.err) {
                 $("#login_error_message").html(response.err);
                 return;
@@ -106,20 +107,11 @@ function signup() {
     });
 }
 
-function resetToken() {
-
-}
-
 function getUserProfile() {
     $("#loading_message").html("Getting userprofile");
     $.ajax({
         type: "POST",
         url: "/ajax_handler/get/profile",
-        // data:{"_token": "{{ csrf_token() }}"},
-        error: function (xhr,status,error) {
-            var err = eval("(" + xhr.responseText + ")");
-            console.log(err.message);
-        },
         success: function (response) {
             if (response.err) {
                 switch (response.err) {

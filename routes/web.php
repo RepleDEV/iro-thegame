@@ -29,6 +29,9 @@ Route::prefix('/ajax_handler')->group(function () {
     Route::get('/logout', function () {
         return abort(404);
     });
+    Route::get('/login', function () {return abort(404);});
+    Route::post('/login', 'AjaxLoginController@login');
+    
     Route::post('/logout', 'Auth\LoginController@logout');
     Route::prefix('/get')->group(function () {
         Route::get('/profile', function () {
