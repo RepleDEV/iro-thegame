@@ -2,9 +2,10 @@
 
 var userProfile;
 
+var hasLoggedIn = false;
+
 function login() {
     var username = $("#username_login").val();
-    var email = $("#email_login").val();
     var passwd = $("#passwd_login").val();
 
     if (!username) {
@@ -13,15 +14,6 @@ function login() {
     }
     if (username.length < 4) {
         $("#login_error_message").html("username must atleast be 4 characters long");
-        return;
-    }
-
-    if (!email) {
-        $("#login_error_message").html("insert email address");
-        return;
-    }
-    if (!ValidateEmail(email)) {
-        $("#login_error_message").html("insert proper email address");
         return;
     }
 
@@ -36,20 +28,26 @@ function login() {
 
     $.ajax({
         type: "POST",
-        url: "/ajax_handler/login",
+        url: "/login",
         data: {
             "username":username,
-            "email":email,
             "password":passwd
         },
+        error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            console.log(err.message.toLowerCase());
+            if (err.message.toLowerCase() == "the given data was invalid.") {
+                $("#login_error_message").html("invalid credentials");
+            }
+        },
         success: function (response) {
-            console.log(response);
             if (response.err) {
                 $("#login_error_message").html(response.err);
                 return;
             }
             Menu.setTo("main");
             getUserProfile();
+            hasLoggedIn = true;
         }
     });
 }
@@ -103,6 +101,7 @@ function signup() {
             }
             Menu.setTo("main");
             getUserProfile();
+            hasLoggedIn = true;
         }
     });
 }
@@ -112,18 +111,24 @@ function getUserProfile() {
     $.ajax({
         type: "POST",
         url: "/ajax_handler/get/profile",
+        error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            alert(err.message);
+        },
         success: function (response) {
             if (response.err) {
                 switch (response.err) {
                     case "NOT LOGGED IN":
                         Menu.setTo("main");
                         break;
+                    default:
+                        Menu.setTo("main");
                 }
                 return;
             }
             Menu.setTo("main");
             userProfile = response;
-            setupLogIn();
+            toggleLogin();
         }
     });
 }
@@ -134,6 +139,8 @@ function logout() {
         url: "/ajax_handler/logout",
         success: function (response) {
             Menu.setTo("main");
+            hasLoggedIn = false;
+            toggleLogin();
         }
     });
 }

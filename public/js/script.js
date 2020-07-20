@@ -14,23 +14,12 @@ $(document).ready(function () {
     getUserProfile();
 });
 
-function setupLogIn() {
-    var child_menu_element = $(".main-menu").children();
-    var children_amount = child_menu_element.length;
-    var child_element = child_menu_element.first();
-    for (var i = 0;i < children_amount;i++) {
-        if (child_element.children().first().html().trim() == "log-in") {
-            child_element.addClass("hidden");
-            child_element = child_element.next();
-            continue;
-        }
-        if (child_element.hasClass("hidden")) {
-            child_element.removeClass("hidden");
-        }
-        child_element = child_element.next();
-    }
-    $("#logged_in_as").html(userProfile.username);
-    $(".status-corner").html($(".status-corner").html() + ` | Logged in as: <strong>${userProfile.username}</strong>`);
+function toggleLogin() {
+    $("#login_menubtn").toggle();
+    $("#stats_menubtn").toggle();
+    $("#profile_menubtn").toggle();
+    $("#profilesettings_menubtn").toggle();
+    $("#logged_in_as").html((hasLoggedIn ? "" : userProfile.username));
 }
 
 // Onstart header animation

@@ -58,22 +58,22 @@
                         play
                     </a>
                 </div>
-                <div class="element" onclick="Menu.setTo('settings')">
+                <div class="element" onclick="Menu.setTo('settings')" id="settings_menubtn">
                     <a href="javascript:void(0)">
                         settings
                     </a>
                 </div>
-                <div class="element" onclick="Menu.setTo('login')">
+                <div class="element" onclick="Menu.setTo('login')" id="login_menubtn">
                     <a href="javascript:void(0)">
                         log-in
                     </a>
                 </div>
-                <div class="element hidden" onclick="Menu.setTo('stats')">
+                <div class="element hidden" onclick="Menu.setTo('stats')" id="stats_menubtn">
                     <a href="javascript:void(0)">
                         statistics
                     </a>
                 </div>
-                <div class="element hidden" onclick="Menu.setTo('profile')">
+                <div class="element hidden" onclick="Menu.setTo('profile')" id="profile_menubtn">
                     <a href="javascript:void(0)">
                         profile
                     </a>
@@ -82,7 +82,7 @@
             <div class="settings-menu menu hidden">
                 <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Settings</h4>
                 <hr>
-                <div class="element" onclick="Menu.setTo('profile_settings')">
+                <div class="element hidden" onclick="Menu.setTo('profile_settings')" id="profilesettings_menubtn">
                     <a href="javascript:void(0)">
                         profile settings
                     </a>
@@ -127,7 +127,6 @@
                 <hr>
                 <p id="login_error_message"></p>
                 <input type="text" name="username" id="username_login" placeholder="Username">
-                <input type="email" placeholder="Email" id="email_login">
                 <input type="password" name="passwd" id="passwd_login" placeholder="Password">
                 <br>
                 <button onclick="login()">Log-in</button>
