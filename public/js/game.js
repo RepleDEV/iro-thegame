@@ -51,8 +51,32 @@ String.prototype.toHHMMSS = function () {
     return hours+':'+minutes+':'+seconds;
 }
 
+const Difficulty = {
+    easy: () => {
+        chosenDifficulty = "easy";
+        step = 4;
+        Menu.next();
+        Game.new();
+    },
+    medium: () => {
+        chosenDifficulty = "medium";
+        step = 6;
+        Menu.next();
+        Game.new();
+    },
+    hard: () => {
+        chosenDifficulty = "hard";
+        step = 8;
+        Menu.next();
+        Game.new();
+        
+    },
+    current: () => chosenDifficulty
+}
+
 const Game = {
-    new: () => {
+    new: function() {
+        hasWon = false;
         step = 256 / 2**step - 1;
         $("#slider_r").attr("step", step);
         $("#slider_g").attr("step", step);
@@ -61,14 +85,12 @@ const Game = {
         var rgc = generateRandomColor().map(round)
         $("#color_g").css("background-color", `rgb(${rgc[0]},${rgc[1]},${rgc[2]})`);
 
-        hasCreatedNewGame = true;
-
         $("#game_diff").html(Difficulty.current());
 
         return;
     },
-    updateColors: () => {
-        var colors = Game.getCurrentColors();
+    updateColors: function() {
+        var colors = this.getCurrentColors();
         $("#color_u").css("background-color", `rgb(${colors[0][0]},${colors[0][1]},${colors[0][2]})`);
         $("#game_colors").html(colors[1].join(", "));
 
@@ -77,34 +99,48 @@ const Game = {
         Game.checkWin();
         return;
     },
-    updateColorPicker: () => {
-        var colorPickerColors = Game.getCurrentColors()[0];
+    updateColorPicker: function() {
+        var colorPickerColors = this.getCurrentColors()[0];
         colorPicker.color.rgb = {r: colorPickerColors[0], g:colorPickerColors[1],b:colorPickerColors[2]};
         return;
     },
-    updateSliders: val => {
+    updateSliders: function(val) {
         $("#slider_r").val(val[0]);
         $("#slider_g").val(val[1]);
         $("#slider_b").val(val[2]);
     },
-    checkWin: () => {
-        if ($("#color_g").css("background-color") == colorPicker.color.rgbString) {
+    checkWin: function() {
+        if ($("#color_g").css("background-color") == colorPicker.color.rgbString && !hasWon) {
             hasWon = true;
             Game.stop();
+            winSequence();
         }
     },
-    stop: () => {
+    stop: function() {
         Stopwatch.stop();
 
         finalcolor = Game.getCurrentColors();
         Game.lock();
     },
-    lock: () => {
+    lock: function() {
         $("#slider_b").prop("disabled", true);
         $("#slider_r").prop("disabled", true);
         $("#slider_g").prop("disabled", true);
     },
-    getCurrentColors: () => {
+    reset: function() {
+        $("#slider_b").prop("disabled", false);
+        $("#slider_r").prop("disabled", false);
+        $("#slider_g").prop("disabled", false);
+
+        Stopwatch.stop();
+        Stopwatch.reset();
+
+        this.updateSliders([0,0,0]);
+        this.updateColorPicker();
+
+        $("#game_time").html("00:00:00");
+    },
+    getCurrentColors: function() {
         var sliderColors = [
             $("#slider_r").val(),
             $("#slider_g").val(),
@@ -115,6 +151,51 @@ const Game = {
     }
     
 };
+
+function winSequence() {
+    var elements = [
+        $(".game-info").children(":nth-child(4)"),
+        $(".game-info").children(":nth-child(3)"),
+        $(".game-info").children(":nth-child(2)"),
+        $(".game-info").children(":nth-child(1)"),
+        $(".play-menu").children("hr"),
+        $("#color_g"),
+        $("#color_u"),
+        $("#slider_b"),
+        $("#slider_g"),
+        $("#slider_r"),
+        $("#picker_element"),
+    ];
+    var timeout = 250;
+    elements.forEach(element => {
+        setTimeout(() => {
+            element.fadeOut();
+        }, timeout);
+        timeout += 250;
+    });
+    setTimeout(() => {
+        Menu.setTo("win");
+    },  timeout);
+
+    $("#save_login_message").html(!hasLoggedIn && "Log-In to save your score!");
+    $("#final_time").html(`${stopwatch_seconds.toString().toHHMMSS()}`);
+
+    if (hasLoggedIn) {
+        $.ajax({
+            type: "POST",
+            url: "/ajax_handler/win_request",
+            data: {
+                "username":userProfile.username,
+                "time":stopwatch_seconds.toString().toHHMMSS(),
+                "user_id":userProfile.id
+            },
+            success: async function (response) {
+                await getLeaderboard();
+                serveLeaderboard();
+            }
+        });
+    }
+}
 
 function sliderFunc() {
     Game.updateColorPicker();
@@ -142,6 +223,9 @@ const Stopwatch = {
     time: () => stopwatch_seconds,
     stop: () => {
         clearTimeout(loop_second);
+    },
+    reset: () => {
+        stopwatch_seconds = 0;
     }
 };
 
@@ -154,3 +238,13 @@ colorPicker.on("color:change", val => {
     Game.updateColorPicker();
     Game.updateColors();
 });
+
+// Leaderboard
+
+function serveLeaderboard() {
+    $(".table").children().first().html("<tr><th class=\"name\">Name</th><th class=\"time\">Time</th></tr>");
+    for (let i = 0; i < (leaderboardData.length > 100 ? 100 : leaderboardData.length); i++) {
+        const data = leaderboardData[i];
+        $(".table").children().first().append(`<tr><td class="name">${data.username}</td><td class="time">${data.time}</td></tr>`);
+    }
+}

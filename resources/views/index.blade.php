@@ -30,13 +30,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void(0)" class="nav-link" onclick="Menu.setTo('newgame');hasCreatedNewGame = false">
+                    <a href="javascript:void(0)" class="nav-link" onclick="Menu.setTo('newgame');Game.reset()">
                         <i class="fas fa-plus fa-3x"></i>
                         <span class="link-text">New Game</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void(0)" class="nav-link" onclick="Menu.setTo('settings');hasCreatedNewGame = false"">
+                    <a href="javascript:void(0)" class="nav-link" onclick="Menu.setTo('settings');Game.reset()">
                         <i class="fas fa-cog fa-5x"></i>
                         <span class="link-text">Settings</span>
                     </a>
@@ -130,7 +130,10 @@
                 <input type="password" name="passwd" id="passwd_login" placeholder="Password">
                 <br>
                 <button onclick="login()">Log-in</button>
-                <p>Don't have an <a href="javascript:void(0)" onclick="Menu.setTo('signup')">account</a>?</p>
+                
+                <div class="element" onclick="Menu.setTo('signup')">
+                    <a href="javascript:void(0)">create account</a>
+                </div>
             </div>
 
             <div class="signup-menu menu hidden">
@@ -188,6 +191,17 @@
                 </div>
             </div>
 
+            <div class="win-menu menu hidden">
+                <h4>Game Completed</h4>
+                <p>Final Time: <span id="final_time"></span> (HH:MM:SS)</p>
+                <p id="save_login_message"></p>
+                <div class="element" onclick="Menu.setTo('main')">
+                    <a href="javascript:void(0)">
+                        back to menu
+                    </a>
+                </div>
+            </div>
+
             <div class="leaderboard-menu">
                 <h4>Leaderboard:</h4>
                 <button class="leaderboard_diff_btn btn-g">4-bit</button>
@@ -198,23 +212,15 @@
                             <th class="name">Name</th>
                             <th class="time">Time</th>
                         </tr>
-                        <tr>
-                            <td class="name">Robert</td>
-                            <td class="time">2:20</td>
-                        </tr>
-                        <tr>
-                            <td class="name">Robert</td>
-                            <td class="time">2:20</td>
-                        </tr>
                     </table>
                 </div>
                 <div class="status-corner">
-                    Playing iro - <span id="status_message">Main Menu</span> | Version: 3.0.0 <br> Online Players: 0
+                    Playing iro - <span id="status_message">Main Menu</span> | Version: 3.0.0 prev <br> Online Players: 0
                 </div>
             </div>
         </main>
     </body>
-    <script src="js/login-ajax.js"></script>
+    <script src="js/ajax.js"></script>
     <script src="js/game.js"></script>
     <script src="js/script.js"></script>
 

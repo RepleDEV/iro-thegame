@@ -1,6 +1,7 @@
 "use strict";
 
 var userProfile;
+var leaderboardData;
 
 var hasLoggedIn = false;
 
@@ -45,9 +46,7 @@ function login() {
                 $("#login_error_message").html(response.err);
                 return;
             }
-            Menu.setTo("main");
-            getUserProfile();
-            hasLoggedIn = true;
+            location.reload();
         }
     });
 }
@@ -94,7 +93,6 @@ function signup() {
             "password_confirmation":passwd
         },
         success: function (response) {
-            console.log(response);
             if (response.err) {
                 $("#signup_error_message").html(response.err);
                 return;
@@ -106,29 +104,30 @@ function signup() {
     });
 }
 
-function getUserProfile() {
-    $("#loading_message").html("Getting userprofile");
-    $.ajax({
-        type: "POST",
+async function getUserProfile() {
+    return await $.ajax({
+        type: "GET",
         url: "/ajax_handler/get/profile",
         error: function(xhr, status, error) {
             var err = eval("(" + xhr.responseText + ")");
             alert(err.message);
         },
         success: function (response) {
-            if (response.err) {
-                switch (response.err) {
-                    case "NOT LOGGED IN":
-                        Menu.setTo("main");
-                        break;
-                    default:
-                        Menu.setTo("main");
-                }
+            if (response.err && response.err == "NOT LOGGED IN") {
                 return;
             }
-            Menu.setTo("main");
             userProfile = response;
-            toggleLogin();
+            hasLoggedIn = true;
+        }
+    });
+}
+
+async function getLeaderboard() {
+    return await $.ajax({
+        type: "GET",
+        url: "/ajax_handler/get/leaderboard",
+        success: function (response) {
+            leaderboardData = response;
         }
     });
 }
@@ -138,9 +137,7 @@ function logout() {
         type: "POST",
         url: "/ajax_handler/logout",
         success: function (response) {
-            Menu.setTo("main");
-            hasLoggedIn = false;
-            toggleLogin();
+            location.reload();
         }
     });
 }

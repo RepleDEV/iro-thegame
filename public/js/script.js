@@ -1,17 +1,25 @@
-const MENUS = ["loading","main", "newgame", "play", "login", "signup", "settings", "stats", "profile", "profile_settings", "game_settings"];
+const MENUS = ["loading","main", "newgame", "play", "login", "signup", "settings", "stats", "profile", "profile_settings", "game_settings", "win"];
 var current_menu = 0;
 
 var chosenDifficulty;
 
 var hasCreatedNewGame = false;
 
-$(document).ready(function () {
+var menu_cooldown = false;
+
+$(document).ready(async function () {
     $.ajaxSetup({
         headers: {
             "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
         }
     });
-    getUserProfile();
+    $("#loading_message").html("Getting userprofile");
+    await getUserProfile();
+    $("#loading_message").html("Getting leaderboard data");
+    await getLeaderboard();
+    Menu.setTo("main");
+    if (hasLoggedIn)toggleLogin();
+    if (leaderboardData)serveLeaderboard();
 });
 
 function toggleLogin() {
@@ -19,7 +27,7 @@ function toggleLogin() {
     $("#stats_menubtn").toggle();
     $("#profile_menubtn").toggle();
     $("#profilesettings_menubtn").toggle();
-    $("#logged_in_as").html((hasLoggedIn ? "" : userProfile.username));
+    $("#logged_in_as").html((hasLoggedIn ? userProfile.username : ""));
 }
 
 // Onstart header animation
@@ -41,35 +49,6 @@ $("#btn-play").click(function (e) {
         Menu.setTo('newgame');
     }
 });
-
-// Difficulty
-const Difficulty = {
-    easy: () => {
-        if (!hasCreatedNewGame){
-            chosenDifficulty = "easy";
-            step = 4;
-            Menu.next();
-            Game.new();
-        }
-    },
-    medium: () => {
-        if (!hasCreatedNewGame) {
-            chosenDifficulty = "medium";
-            step = 6;
-            Menu.next();
-            Game.new();
-        }
-    },
-    hard: () => {
-        if (!hasCreatedNewGame) {
-            chosenDifficulty = "hard";
-            step = 8;
-            Menu.next();
-            Game.new();
-        }
-    },
-    current: () => chosenDifficulty
-}
 
 // Leaderboard button toggle
 $(".leaderboard_diff_btn").click(function (e) { 
@@ -106,34 +85,51 @@ function toggleNav() {
     }
 }
 
+function Menucooldown() {
+    menu_cooldown = true;
+    setTimeout(() => {
+        menu_cooldown = false;
+    }, 500);
+}
+
 // Menu functions
 const Menu = {
     previous: () => {
+        if (menu_cooldown)return;
         $(`.${MENUS[current_menu]}-menu`).fadeOut(415);
         current_menu--;
         setTimeout(() => {
             $(`.${MENUS[current_menu]}-menu`).fadeIn();
         }, 415);
+        Menucooldown();
     },
     next: () => {
+        if (menu_cooldown)return;
         $(`.${MENUS[current_menu]}-menu`).fadeOut(415);
         current_menu++;
         setTimeout(() => {
             $(`.${MENUS[current_menu]}-menu`).fadeIn();
         }, 415);
+        Menucooldown();
     },
     setTo: (menu_name) => {
+        if (menu_cooldown)return;
         $(`.${MENUS[current_menu]}-menu`).fadeOut(415);
         current_menu = MENUS.indexOf(menu_name);
         setTimeout(() => {
             $(`.${menu_name}-menu`).fadeIn();
         }, 415);
+        Menucooldown();
     },
     hide: (menu_name) => {
+        if (menu_cooldown)return;
         $(menu_name).fadeOut(415);
+        Menucooldown();
     },
     show: (menu_name) => {
+        if (menu_cooldown)return;
         $(menu_name).fadeIn();
+        Menucooldown();
     },
     current: () => console.log("Curent Menu: " + MENUS[current_menu])
 };
