@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLeaderboardTable extends Migration
+class CreateGamesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateLeaderboardTable extends Migration
      */
     public function up()
     {
-        Schema::create('leaderboard', function (Blueprint $table) {
+        Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->string('username',255);
-            $table->string('time',255);
+            $table->bigInteger('final_time');
+            $table->string('final_color',255);
             $table->bigInteger('user_id');
         });
     }
@@ -28,6 +28,6 @@ class CreateLeaderboardTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leaderboard');
+        Schema::dropIfExists('games');
     }
 }

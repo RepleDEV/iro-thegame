@@ -97,9 +97,7 @@ function signup() {
                 $("#signup_error_message").html(response.err);
                 return;
             }
-            Menu.setTo("main");
-            getUserProfile();
-            hasLoggedIn = true;
+            location.reload();
         }
     });
 }

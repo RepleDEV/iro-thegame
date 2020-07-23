@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->date('updated_at');
             $table->date('created_at');
             $table->string('best_time', 255)->default("No best time yet!");
-            $table->bigInteger('score')->default(0);
+            $table->bigInteger('experience_points')->default(0);
         });
     }
 

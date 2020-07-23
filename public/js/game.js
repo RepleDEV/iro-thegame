@@ -76,6 +76,7 @@ const Difficulty = {
 
 const Game = {
     new: function() {
+        this.reset();
         hasWon = false;
         step = 256 / 2**step - 1;
         $("#slider_r").attr("step", step);
@@ -138,6 +139,8 @@ const Game = {
         this.updateSliders([0,0,0]);
         this.updateColorPicker();
 
+        finalcolor = "";
+
         $("#game_time").html("00:00:00");
     },
     getCurrentColors: function() {
@@ -185,9 +188,12 @@ function winSequence() {
             type: "POST",
             url: "/ajax_handler/win_request",
             data: {
-                "username":userProfile.username,
-                "time":stopwatch_seconds.toString().toHHMMSS(),
+                "final_time":stopwatch_seconds,
+                "final_color":finalcolor.join(', '),
                 "user_id":userProfile.id
+            },
+            error: function (xhr) {
+                console.log(xhr);
             },
             success: async function (response) {
                 await getLeaderboard();
@@ -239,12 +245,11 @@ colorPicker.on("color:change", val => {
     Game.updateColors();
 });
 
-// Leaderboard
-
 function serveLeaderboard() {
-    $(".table").children().first().html("<tr><th class=\"name\">Name</th><th class=\"time\">Time</th></tr>");
+    if (!leaderboardData)return;
+    $(".column-rows").html("");
     for (let i = 0; i < (leaderboardData.length > 100 ? 100 : leaderboardData.length); i++) {
         const data = leaderboardData[i];
-        $(".table").children().first().append(`<tr><td class="name">${data.username}</td><td class="time">${data.time}</td></tr>`);
+        $(".column-rows").append(`<div class="row"><div class="cell">${i}</div><div class="cell">${data.username}</div><div class="cell">${data.final_time.toString().toHHMMSS()}</div></div>`);
     }
 }

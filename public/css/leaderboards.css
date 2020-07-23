@@ -12,16 +12,6 @@
     margin: 0px 0px 1.2rem 0px;
     display: inline-block;
 }
-.leaderboard-menu hr {
-    border:0;
-    margin:0;
-    animation: color-shift 10s linear 0s infinite alternate;
-}
-
-.leaderboard-menu .table {
-    overflow: auto;
-    height: 8rem;
-}
 
 .leaderboard-menu .table th {
     background-color: var(--bg-primary);
@@ -75,4 +65,62 @@
     background-color: transparent;
     color:#F00;
     border-left:2px solid #F00;
+}
+
+/* LEADERBOARD TABLES */
+.table {
+    margin:0;
+    animation: color-shift 10s linear 0s infinite alternate;
+    border-bottom: 4px solid #898989;
+    border-left: 1px solid #898989;
+    border-right: 1px solid #898989;
+    width: 100%;
+    overflow: auto;
+    height: 8rem;
+}
+
+.table .column-header {
+    width: 100%;
+    background-color: var(--bg-secondary);
+    
+}
+
+.table .column-header div {
+    display:inline-block;
+    font-family: 14px;
+}
+
+.table .column-header div:first-child, .table .column-rows .row .cell:first-child {
+    width: 1.2rem;
+    text-align: center;
+    border-right: 1px solid #898989;
+}
+
+.table .column-header div:last-child, .table .column-rows .row .cell:last-child {
+    float:right;
+    width: 5rem;
+    text-align: center;
+    border-left: 1px solid #898989;
+}
+
+.table .column-rows .row .cell:last-child {
+    text-align: left;
+}
+
+.table .column-rows .row:hover {
+    background-color: #1A1A1A;
+}
+
+.table .column-rows {
+    overflow:auto;
+    border-bottom: 1px solid #898989;
+}
+
+.table .column-rows .row {
+    width: 100%;
+    transition:background-color 220ms linear;
+}
+
+.table .column-rows .row .cell {
+    display: inline-block;
 }

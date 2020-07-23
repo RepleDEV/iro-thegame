@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-   return Auth::user();
+   return Auth::logout();
 });
 
 Route::prefix('/ajax_handler')->group(function () {

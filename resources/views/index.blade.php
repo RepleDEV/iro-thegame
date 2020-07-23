@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,13 +103,13 @@
             <div class="profile-menu menu hidden">
                 <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Profile Info</h4>
                 <hr>
-                <p>Logged in as: <strong id="logged_in_as"></strong></p>
+                <h2 id="logged_in_as"></h2>
                 <p>Games played: <strong id="games_played"></strong></p>
                 <div class="element" onclick="Menu.setTo('profile_settings')">
                     <a href="javascript:void(0)">
                         profile settings
                     </a>
-                </div>
+                </div>  
             </div>
 
             <div class="stats-menu menu hidden">
@@ -203,16 +199,16 @@
             </div>
 
             <div class="leaderboard-menu">
-                <h4>Leaderboard:</h4>
-                <button class="leaderboard_diff_btn btn-g">4-bit</button>
-                <hr>
+                <h4>Leaderboard</h4>
+                {{-- <button class="leaderboard_diff_btn btn-g">4-bit</button> --}}
                 <div class="table">
-                    <table>
-                        <tr>
-                            <th class="name">Name</th>
-                            <th class="time">Time</th>
-                        </tr>
-                    </table>
+                    <div class="column-header">
+                        <div>#</div>
+                        <div>Username</div>
+                        <div>Time</div>
+                    </div>
+                    <div class="column-rows">
+                    </div>
                 </div>
                 <div class="status-corner">
                     Playing iro - <span id="status_message">Main Menu</span> | Version: 3.0.0 prev <br> Online Players: 0
