@@ -85,7 +85,7 @@ main, .container {
     border:0;
     border-bottom: 3px solid white;
 
-    transition: opacity 800ms ease;
+    transition: opacity 220ms ease;
 }
 
 .login-menu button:hover, .signup-menu button:hover {

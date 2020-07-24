@@ -104,7 +104,7 @@
                 <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Profile Info</h4>
                 <hr>
                 <h2 id="logged_in_as"></h2>
-                <p>Games played: <strong id="games_played"></strong></p>
+                <p>Best time:</p>
                 <div class="element" onclick="Menu.setTo('profile_settings')">
                     <a href="javascript:void(0)">
                         profile settings
@@ -126,7 +126,6 @@
                 <input type="password" name="passwd" id="passwd_login" placeholder="Password">
                 <br>
                 <button onclick="login()">Log-in</button>
-                
                 <div class="element" onclick="Menu.setTo('signup')">
                     <a href="javascript:void(0)">create account</a>
                 </div>

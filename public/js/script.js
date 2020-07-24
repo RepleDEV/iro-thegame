@@ -35,12 +35,7 @@ $(".header-hr").fadeIn(1150);
 $(".header-hr").css("width", "100%");
 
 // Navbar toggle
-$(".navbar").mouseenter(function () { 
-    toggleNav();
-});
-$(".navbar").mouseleave(function () { 
-    toggleNav();
-});
+$(".navbar").hover(toggleNav,toggleNav);
 
 // Play btn from the main menu
 $("#btn-play").click(function (e) { 
@@ -83,8 +78,10 @@ function toggleNav() {
             $(".link-text").fadeToggle(150);
         }, 120);
     } else {
-        $(".navbar").css("width", "5rem");
-        $(".link-text").fadeToggle(70);
+        $(".link-text").fadeToggle(120);
+        setTimeout(() => {
+            $(".navbar").css("width", "5rem");
+        }, 120);
     }
 }
 
@@ -134,5 +131,20 @@ const Menu = {
         $(menu_name).fadeIn();
         Menucooldown();
     },
-    current: () => console.log("Curent Menu: " + MENUS[current_menu])
+    current: () => "Curent Menu: " + MENUS[current_menu]
 };
+
+$("#username_login").on('keypress',login_enter_handler)
+$("#passwd_login").on('keypress',login_enter_handler)
+
+$("#username_signup").on('keypress',signup_enter_handler)
+$("#email_signup").on('keypress',signup_enter_handler)
+$("#passwd_signup").on('keypress',signup_enter_handler)
+
+function login_enter_handler(e) {
+    if (e.which == 13)login();
+}
+
+function signup_enter_handler(e) {
+    if (e.which== 13)signup();
+}
