@@ -98,7 +98,3 @@ main, .container {
     text-transform: uppercase;
     font-size: 14px;
 }
-
-#loading_message {
-    font-family: 'Consolas';
-}

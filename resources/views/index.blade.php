@@ -42,7 +42,7 @@
         <main>
             <div class="loading-menu menu">
                 <p>Loading...</p>
-                <p id="loading_message"></p>
+                <pre id="loading_message"></pre>
             </div>
             <div class="main-menu menu hidden">
                 <div class="header">
