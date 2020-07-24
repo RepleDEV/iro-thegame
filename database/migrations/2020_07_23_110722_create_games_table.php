@@ -17,6 +17,7 @@ class CreateGamesTable extends Migration
             $table->id();
             $table->bigInteger('final_time');
             $table->string('final_color',255);
+            $table->string('difficulty',255);
             $table->bigInteger('user_id');
         });
     }

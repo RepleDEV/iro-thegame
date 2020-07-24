@@ -58,16 +58,19 @@ $(".leaderboard_diff_btn").click(function (e) {
             this.innerHTML = "6-bit";
             $(".leaderboard_diff_btn").removeClass("btn-g");
             $(".leaderboard_diff_btn").addClass("btn-y");
+            serveLeaderboard("medium");
             break;
         case "6-bit":
             this.innerHTML = "8-bit";
             $(".leaderboard_diff_btn").removeClass("btn-y");
             $(".leaderboard_diff_btn").addClass("btn-r");
+            serveLeaderboard("hard");
             break;
         case "8-bit":
             this.innerHTML = "4-bit";
             $(".leaderboard_diff_btn").removeClass("btn-r");
             $(".leaderboard_diff_btn").addClass("btn-g");
+            serveLeaderboard("easy");
             break;
     }
 });

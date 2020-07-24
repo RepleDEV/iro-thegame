@@ -190,10 +190,11 @@ function winSequence() {
             data: {
                 "final_time":stopwatch_seconds,
                 "final_color":finalcolor.join(', '),
-                "user_id":userProfile.id
+                "user_id":userProfile.id,
+                "difficulty":chosenDifficulty
             },
             error: function (xhr) {
-                console.log(xhr);
+                console.log(xhr.responseJSON.message);
             },
             success: async function (response) {
                 await getLeaderboard();
@@ -245,11 +246,26 @@ colorPicker.on("color:change", val => {
     Game.updateColors();
 });
 
-function serveLeaderboard() {
+function serveLeaderboard(difficulty = "easy") {
     if (!leaderboardData)return;
+    switch (difficulty) {
+        case "easy":
+            difficulty = 0;
+            break;
+        case "medium":
+            difficulty = 1;
+            break;
+        case "hard":
+            difficulty = 2;
+            break;
+        default:
+            difficulty = 0;
+            break;
+    }
     $(".column-rows").html("");
     for (let i = 0; i < (leaderboardData.length > 100 ? 100 : leaderboardData.length); i++) {
-        const data = leaderboardData[i];
+        var diff = leaderboardData[difficulty];
+        var data = diff[i];
         $(".column-rows").append(`<div class="row"><div class="cell">${i}</div><div class="cell">${data.username}</div><div class="cell">${data.final_time.toString().toHHMMSS()}</div></div>`);
     }
 }

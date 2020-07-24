@@ -200,7 +200,7 @@
 
             <div class="leaderboard-menu">
                 <h4>Leaderboard</h4>
-                {{-- <button class="leaderboard_diff_btn btn-g">4-bit</button> --}}
+                <button class="leaderboard_diff_btn btn-g">4-bit</button>
                 <div class="table">
                     <div class="column-header">
                         <div>#</div>
@@ -219,5 +219,4 @@
     <script src="js/ajax.js"></script>
     <script src="js/game.js"></script>
     <script src="js/script.js"></script>
-
 </html>

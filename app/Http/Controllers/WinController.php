@@ -14,7 +14,8 @@ class WinController extends Controller
         LeaderboardModel::write([
             "final_time"=>$request->final_time,
             "final_color"=>$request->final_color,
-            "user_id"=>$request->user_id
+            "user_id"=>$request->user_id,
+            "difficulty"=>$request->difficulty
         ]);
         if ($request->is_best_time) {
             UsersModel::update_by_id($request->user_id, 'best_time',$request->time);
