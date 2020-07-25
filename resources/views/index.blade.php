@@ -132,7 +132,7 @@
             </div>
 
             <div class="signup-menu menu hidden">
-                <h4 class="back-btn" onclick="Menu.setTo('main');$('#error_message').html('')"><i class="fas fa-chevron-left"></i>Log-in</h4>
+                <h4 class="back-btn" onclick="Menu.setTo('main');$('#error_message').html('')"><i class="fas fa-chevron-left"></i>Sign-up</h4>
                 <hr>
                 <p id="signup_error_message"></p>
                 <input type="text" name="username" id="username_signup" placeholder="Username">

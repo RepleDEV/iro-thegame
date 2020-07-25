@@ -47,7 +47,6 @@ Route::prefix('/ajax_handler')->group(function () {
     });
 });
 
-// Replaces this
 Auth::routes();
 
 

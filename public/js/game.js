@@ -263,10 +263,9 @@ function serveLeaderboard(difficulty = "easy") {
             break;
     }
     $(".column-rows").html("");
-    for (let i = 0; i < (leaderboardData.length > 100 ? 100 : leaderboardData.length); i++) {
+    for (let i = 0; i < (leaderboardData[difficulty].length > 100 ? 100 : leaderboardData[difficulty].length); i++) {
         var diff = leaderboardData[difficulty];
         var data = diff[i];
-        if (!data)continue;
         $(".column-rows").append(`<div class="row"><div class="cell">${i}</div><div class="cell">${data.username}</div><div class="cell">${data.final_time.toString().toHHMMSS()}</div></div>`);
     }
 }
