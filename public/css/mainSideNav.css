@@ -46,6 +46,9 @@
 .link-text {
     display:none;
     margin-left: 1rem;
+    text-transform: none;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .nav-link svg{
@@ -70,11 +73,11 @@
     transition: background-color 120ms ease;
 }
 
-.logo-text {
-    display: inline;
-    position: absolute;
-    left: -999px;
-}
+/* .logo-text {
+    width:0;
+    transition:width 340ms ease-out;
+    margin-left:0;
+} */
 
 .profile-logo svg {
     transform: rotate(0deg);

@@ -21,7 +21,7 @@
             <ul class="navbar-nav">
                 <li class="profile-logo">
                     <a href="javascript:void(0)" class="nav-link">
-                        <span class="link-text" id="user-name-sidenav-span" style="text-transform: none">iro-thegame</span>
+                        <span class="link-text logo-text" id="user-name-sidenav-span">iro-thegame</span>
                         <i class="fas fa-angle-double-right fa-3x"></i>
                     </a>
                 </li>
@@ -98,6 +98,11 @@
                         log-out
                     </a>
                 </div>
+            </div>
+            <div class="game_settings-menu menu hidden">
+                <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Game Settings</h4>
+                <hr>
+                <p>Coming soon!</p>
             </div>
 
             <div class="profile-menu menu hidden">

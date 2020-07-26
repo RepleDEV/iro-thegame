@@ -266,6 +266,6 @@ function serveLeaderboard(difficulty = "easy") {
     for (let i = 0; i < (leaderboardData[difficulty].length > 100 ? 100 : leaderboardData[difficulty].length); i++) {
         var diff = leaderboardData[difficulty];
         var data = diff[i];
-        $(".column-rows").append(`<div class="row"><div class="cell">${i}</div><div class="cell">${data.username}</div><div class="cell">${data.final_time.toString().toHHMMSS()}</div></div>`);
+        $(".column-rows").append(`<div class="row"><div class="cell">${i+1}</div><div class="cell">${data.username}</div><div class="cell">${data.final_time.toString().toHHMMSS()}</div></div>`);
     }
 }
