@@ -10,12 +10,11 @@
 }
 
 .newgame-menu {
-    margin: 13.5rem 0;
+    margin: 13.4rem 0;
 }
 .play-menu {
     overflow: hidden;
     width: fit-content;
-    /* background-color: red; */
 }
 .play-menu .game-info{ 
     overflow:auto;

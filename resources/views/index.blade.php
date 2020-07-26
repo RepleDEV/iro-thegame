@@ -75,7 +75,7 @@
                     </a>
                 </div>
             </div>
-            <div class="settings-menu menu hidden">
+            <div class="settings-menu menu hidden" style="margin:13.4rem 0">
                 <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Settings</h4>
                 <hr>
                 <div class="element hidden" onclick="Menu.setTo('profile_settings')" id="profilesettings_menubtn">
@@ -123,7 +123,7 @@
                 <p>Coming soon!</p>
             </div>
 
-            <div class="login-menu menu hidden">
+            <div class="login-menu menu hidden"  style="margin:13.4rem 0">
                 <h4 class="back-btn" onclick="Menu.setTo('main');$('#error_message').html('')"><i class="fas fa-chevron-left"></i>Log-in</h4>
                 <hr>
                 <p id="login_error_message"></p>
