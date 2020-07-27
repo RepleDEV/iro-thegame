@@ -70,7 +70,7 @@
 /* LEADERBOARD TABLES */
 .table {
     margin:0;
-    animation: color-shift 10s linear 0s infinite alternate;
+    border-top:1px solid #898989;
     border-bottom: 4px solid #898989;
     border-left: 1px solid #898989;
     border-right: 1px solid #898989;

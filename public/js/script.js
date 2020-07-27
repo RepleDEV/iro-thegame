@@ -32,7 +32,7 @@ function toggleLogin() {
 
 // Onstart header animation
 $(".header-hr").fadeIn(1150);
-$(".header-hr").css("width", "100%");
+$(".header-hr").css("width", "12rem");
 
 // Navbar toggle
 $(".navbar").hover(toggleNav,toggleNav);

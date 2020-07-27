@@ -102,7 +102,14 @@
             <div class="game_settings-menu menu hidden">
                 <h4 class="back-btn" onclick="Menu.setTo('main')"><i class="fas fa-chevron-left"></i>Game Settings</h4>
                 <hr>
-                <p>Coming soon!</p>
+                <div id="experimental_settings" class="">
+                    <div class="element" onclick="Experimental_protocols.party()">
+                        <a href="javascript:void(0)">
+                            enable advanced lighting effects
+                        </a>
+                    </div>
+                    <p style="font-size:10px">Records sounds from your screen and elevates the sidebar colors.</p>
+                </div>
             </div>
 
             <div class="profile-menu menu hidden">
@@ -220,6 +227,9 @@
             </div>
         </main>
     </body>
+    {{-- <script src="js/experimental_protocols.js"></script>
+    <script src="js/volume-meter.js"></script>
+    <script src="js/console.js"></script> --}}
     <script src="js/ajax.js"></script>
     <script src="js/game.js"></script>
     <script src="js/script.js"></script>

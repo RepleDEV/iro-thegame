@@ -2,7 +2,11 @@
     float:left;
     margin: 10rem 0;
     text-align: left;
-    width: 15%;
+    width: 50%;
+}
+.menu hr {
+    margin:0.5rem 0;
+    width: 12rem;
 }
 
 .login-menu {
