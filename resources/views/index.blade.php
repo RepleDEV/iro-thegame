@@ -227,7 +227,8 @@
             </div>
         </main>
     </body>
-    {{-- <script src="js/experimental_protocols.js"></script>
+    {{-- Tried something new kekw
+    <script src="js/experimental_protocols.js"></script>
     <script src="js/volume-meter.js"></script>
     <script src="js/console.js"></script> --}}
     <script src="js/ajax.js"></script>
